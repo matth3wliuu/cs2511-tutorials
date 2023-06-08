@@ -4,7 +4,7 @@ public class Circle extends Shape {
 
     private int x, y;
     private int r;
-    private final double pi = 3.14159;
+    public static final double pi = 3.14159;
 
     public static int numberOfCircles = 0;
 
@@ -17,11 +17,24 @@ public class Circle extends Shape {
         return 2 * Circle.pi * this.r;
     }
 
+    public static double hello() {
+        return 2 * Circle.pi;
+    }
+
     public int x() {
         return this.x;
     }
 
     public int y() {
         return this.y;
+    }
+
+    public static void main(String[] args) {
+        Circle c = new Circle("red");
+        Shape s = new Shape("red");
+
+        c.x = 5;
+
+
     }
 }
