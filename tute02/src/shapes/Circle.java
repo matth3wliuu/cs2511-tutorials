@@ -4,7 +4,7 @@ public class Circle extends Shape {
 
     private int x, y;
     private int r;
-    private static final double pi = 3.14159;
+    private final double pi = 3.14159;
 
     public static int numberOfCircles = 0;
 
