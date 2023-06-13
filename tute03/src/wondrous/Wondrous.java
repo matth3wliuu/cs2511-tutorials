@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Wondrous {
 
-    private final int MY_MAGIC_NUMBER = 42;
-
     public List<Integer> wondrous(int start) {
         int current = start;
         List<Integer> sequence = new ArrayList<Integer>();
