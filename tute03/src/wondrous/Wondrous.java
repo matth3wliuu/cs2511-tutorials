@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Wondrous {
 
-    private final int MY_MAGIC_NUMBER = 42;
+    public List<Integer> wondrous(int start) throws Exception {
+        if (start < 0) {
+            throw new Exception("Start cannot be less than 0");
+        }
 
-    public List<Integer> wondrous(int start) {
         int current = start;
         List<Integer> sequence = new ArrayList<Integer>();
 
@@ -19,6 +21,7 @@ public class Wondrous {
                 current = (current * 3) + 1;
             }
         }
+        sequence.add(current);
 
         return sequence;
     }
