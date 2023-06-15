@@ -61,7 +61,7 @@ public class Animals {
         // SoundRecorder.record(latte);
 
         // ! DO NOT USE `var` THIS IS JUST A DEMO
-        // var mystery = (Animal) new Cat("Mystery");
-        // SoundRecorder.record(mystery);
+        var mystery = (Animal) new Cat("Mystery");
+        SoundRecorder.record(mystery);
     }
 }

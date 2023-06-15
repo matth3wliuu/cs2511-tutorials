@@ -4,6 +4,9 @@ package static_functions;
 // ! THIS IS JUST A DEMO
 
 // ? Q1: Can you override a static method in Java?
+// No, static methods cannot be overriden
+// Static methods are bounded objects at compile time
+// Overriding is a concept that exist at runtime time
 
 // ? Q2: What is the output of executing A.f()?
 

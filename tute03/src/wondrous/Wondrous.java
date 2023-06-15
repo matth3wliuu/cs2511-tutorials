@@ -5,7 +5,11 @@ import java.util.List;
 
 public class Wondrous {
 
-    public List<Integer> wondrous(int start) {
+    public List<Integer> wondrous(int start) throws Exception {
+        if (start < 1) {
+            throw new Exception("Start cannot be less than 1");
+        }
+
         int current = start;
         List<Integer> sequence = new ArrayList<Integer>();
 
@@ -17,6 +21,8 @@ public class Wondrous {
                 current = (current * 3) + 1;
             }
         }
+
+        sequence.add(current);
 
         return sequence;
     }

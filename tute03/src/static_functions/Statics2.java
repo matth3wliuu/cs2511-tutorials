@@ -5,6 +5,12 @@ package static_functions;
 
 // ? What is the output of executing A.f()?
 
+public class Statics2 {
+    public static void main(String[] args) {
+
+    }
+}
+
 class A {
     public static void f() {
         B b1 = new B();
@@ -17,8 +23,8 @@ class A {
 }
 
 class B {
-    private int x;
-    private static int y;
+    private int x = 0;
+    private static int y = 0;
 
     public int getX() {
         return x;
