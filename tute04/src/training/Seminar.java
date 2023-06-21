@@ -1,4 +1,4 @@
-package unsw.training;
+package training;
 
 import java.time.LocalDate;
 import java.util.List;
