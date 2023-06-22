@@ -10,7 +10,6 @@ import java.util.List;
  */
 public class Seminar {
     private LocalDate start;
-
     private List<String> attendees;
 
     public LocalDate getStart() {
@@ -19,5 +18,19 @@ public class Seminar {
 
     public List<String> getAttendees() {
         return attendees;
+    }
+
+    public LocalDate makeBooking(String employee, List<LocalDate> avail) {
+        Boolean hasSpace = this.getAttendees().size() < 10;
+        if (!hasSpace) {
+            return null;
+        }
+
+        for (LocalDate time : avail) {
+            if (time.equals(this.start)) {
+                return time;
+            }
+        }
+        return null;
     }
 }
