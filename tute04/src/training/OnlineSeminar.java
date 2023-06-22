@@ -1,4 +1,4 @@
-package unsw.training;
+package training;
 
 import java.util.List;
 
