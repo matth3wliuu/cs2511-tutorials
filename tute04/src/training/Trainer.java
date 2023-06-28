@@ -1,5 +1,6 @@
 package training;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -17,5 +18,13 @@ public class Trainer {
 
     public List<Seminar> getSeminars() {
         return seminars;
+    }
+
+    public LocalDate bookTraining(String employee, List<LocalDate> availabilities) {
+        for (Seminar seminar : this.getSeminars()) {
+                seminar.makeBooking(employee, availabilities);
+            }
+
+        return null;
     }
 }

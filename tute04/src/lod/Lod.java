@@ -44,16 +44,17 @@ class C {
     }
 
     // ? Does this break LOD?
+    // this does not break LOD
     public void func2(A a) {
-        func1();
-        System.out.println(a.getName());
+        func1(); // fine by rule 1
+        System.out.println(a.getName()); // fine by rule 3
     }
 
     // ? Does this break LOD?
     public void func3() {
         A a2 = new A("Bob");
-        a2.func1();
+        a2.func1();  // fine by rule 4
 
-        this.b.getA().func1();
+        this.b.getA().func1(); // breaks LOD because we're reaching beyond our immediate friends
     }
 }

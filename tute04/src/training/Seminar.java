@@ -20,4 +20,15 @@ public class Seminar {
     public List<String> getAttendees() {
         return attendees;
     }
+
+    public LocalDate makeBooking(String employee, List<LocalDate> availabilities) {
+        for (LocalDate availability : availabilities) {
+            if (this.getStart().equals(availability) && this.getAttendees().size() < 10) {
+                this.attendees.add(employee);
+                return availability;
+            }
+        }
+
+        return null;
+    }
 }

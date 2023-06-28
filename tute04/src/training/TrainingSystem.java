@@ -9,14 +9,12 @@ public class TrainingSystem {
 
     public LocalDate bookTraining(String employee, List<LocalDate> availability) {
         for (Trainer trainer : trainers) {
-            for (Seminar seminar : trainer.getSeminars()) {
-                for (LocalDate available : availability) {
-                    if (seminar.getStart().equals(available) &&
-                            seminar.getAttendees().size() < 10) {
-                        seminar.getAttendees().add(employee);
-                        return available;
-                    }
-                }
+            LocalDate time = trainer.bookTraining(employee, availability);
+            if (time == null) {
+                continue;
+            }
+            else {
+                return time;
             }
         }
         return null;
