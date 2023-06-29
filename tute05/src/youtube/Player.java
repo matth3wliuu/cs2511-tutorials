@@ -1,5 +1,6 @@
 package youtube;
 
+import youtube.state.Ready;
 import youtube.state.ViewingState;
 
 public class Player {
@@ -7,24 +8,27 @@ public class Player {
     private Video nextVideo;
     private Boolean isPlaying = false;
 
+    private ViewingState state = new Ready(this);
+
     public Player(Video video, Video nextVideo) {
         this.video = video;
         this.nextVideo = nextVideo;
     }
 
     public String lock() {
-        return null;
+        return state.lock();
     }
 
     public String play() {
-        return null;
+        return state.play();
     }
 
     public String next() {
-        return null;
+        return state.next();
     }
 
     public void changeState(ViewingState state) {
+        this.state = state;
     }
 
     public String getVideo() {
