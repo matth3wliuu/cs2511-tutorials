@@ -2,29 +2,28 @@ package youtube.state;
 
 import youtube.Player;
 
-public class Locked extends ViewingState {
+public class Playing extends ViewingState {
 
-    public Locked(Player player) {
+    public Playing(Player player) {
         super(player);
     }
 
     @Override
     public String lock() {
-        if (getVideoPlayer().getIsPlaying()) {
-            getVideoPlayer().changeState(new Ready(getVideoPlayer()));
-            return "Stop playing";
-        }
+        getVideoPlayer().changeState(new Playing(getVideoPlayer()));
         return "Locked";
     }
 
     @Override
     public String play() {
         getVideoPlayer().changeState(new Ready(getVideoPlayer()));
-        return "Ready...";
+        getVideoPlayer().setPlaying(false);
+        return "Paused";
     }
 
     @Override
     public String next() {
-        return "Error: Locked";
+        return getVideoPlayer().getNextVideo();
     }
+
 }
