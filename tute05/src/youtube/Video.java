@@ -2,7 +2,6 @@ package youtube;
 
 public class Video {
     private int length; // Length of the video in seconds
-
     private String name;
 
     public Video(String name, int length) {

@@ -3,7 +3,6 @@ package youtube.state;
 import youtube.Player;
 
 public abstract class ViewingState {
-
     private Player player;
 
     public ViewingState(Player player) {
