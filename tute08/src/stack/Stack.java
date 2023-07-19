@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * A Simple Stack.
  * @param <E>
- * 
+ *
  */
 public class Stack<E> implements Iterable<E> {
-    
+
     /**
      * Pushes an element onto the top of the stack.
      * @param element
@@ -19,11 +19,10 @@ public class Stack<E> implements Iterable<E> {
     public void push(E element) {}
 
     /**
-     * Removes the top element of the stack, and returns that element.
-     * @precondition The stack is not empty.
+     * Returns the size of the stack.
      */
-    public E pop() {
-        return null;
+    public int size() {
+        return 0;
     }
 
     /**
@@ -34,19 +33,13 @@ public class Stack<E> implements Iterable<E> {
     }
 
     /**
-     * Returns an iterator to the internal data structure of the stack.
+     * Removes the top element of the stack, and returns that element.
+     * @precondition The stack is not empty.
      */
-    public Iterator<E> iterator() {
+    public E pop() {
         return null;
     }
 
-    /**
-     * Returns the size of the stack.
-     */
-    public int size() {
-        return 0;
-    }
-    
     /**
      * Returns the stack as an ArrayList
      */
@@ -54,12 +47,19 @@ public class Stack<E> implements Iterable<E> {
         return null;
     }
 
-    public static Integer sumStack(Stack<? extends Integer> stack) {
+    /**
+     * Returns an iterator to the internal data structure of the stack.
+     */
+    public Iterator<E> iterator() {
+        return null;
+    }
+
+    public static Integer sumStack(Stack<? extends Integer> st) {
         return 0;
     }
 
-    public static void prettyPrint(Stack<?> stack) {}
-        
+    public static void prettyPrint(Stack<?> st) {}
+
 
     public static void main(String[] args) {
         Stack<String> stack = new Stack<String>();
