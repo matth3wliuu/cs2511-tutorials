@@ -2,18 +2,27 @@ package heist;
 
 /**
  * A single access to a bank account.
- * 
+ *
  * @author Nick Patrikeos + @your name
  */
 public class BankAccountAccessor {
-    
+
     private BankAccount account;
 
-    public BankAccountAccessor(BankAccount account) {
+    private static BankAccountAccessor accessor = null;
+
+    private BankAccountAccessor(BankAccount account) {
         this.account = account;
     }
 
-    public void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
+    public static BankAccountAccessor getInstance(BankAccount account) {
+        if (accessor == null) {
+            accessor = new BankAccountAccessor(account);
+        }
+        return accessor;
+    }
+
+    public synchronized void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
         System.out.println(user + " is accessing the bank.");
 
         for (int i = 0; i < numberOfWithdrawals; i++) {

@@ -12,24 +12,30 @@ import java.util.List;
  */
 public class Stack<E> implements Iterable<E> {
 
+    private List<E> stack = new ArrayList<>();
+
+
     /**
      * Pushes an element onto the top of the stack.
      * @param element
      */
-    public void push(E element) {}
+    public void push(E element) {
+        stack.add(element);
+    }
 
     /**
      * Returns the size of the stack.
      */
     public int size() {
-        return 0;
+        return stack.size();
     }
 
     /**
      * Returns the top element of the stack, without removing it.
+     * @ precondition: the stack is not empty.
      */
     public E peek() {
-        return null;
+        return stack.get(stack.size() - 1);
     }
 
     /**
@@ -37,28 +43,43 @@ public class Stack<E> implements Iterable<E> {
      * @precondition The stack is not empty.
      */
     public E pop() {
-        return null;
+        return stack.remove(stack.size() - 1);
     }
 
     /**
      * Returns the stack as an ArrayList
      */
     public ArrayList<E> toArrayList() {
-        return null;
+        return new ArrayList<E>(stack);
     }
 
     /**
      * Returns an iterator to the internal data structure of the stack.
      */
     public Iterator<E> iterator() {
-        return null;
+        List<E> copy = toArrayList();
+        Collections.reverse(copy);
+        return copy.iterator();
     }
 
     public static Integer sumStack(Stack<? extends Integer> st) {
-        return 0;
+        Integer res = 0;
+        for (Integer element : st) {
+            res += element;
+        }
+        return res;
     }
 
-    public static void prettyPrint(Stack<?> st) {}
+    // 1, 2, 3, 4, 5
+    // [ 1, 2, 3, 4, 5 ]
+    public static void prettyPrint(Stack<?> st) {
+        System.out.print("[ ");
+        Iterator<?> iterator = st.iterator();
+        for (int i = 0; i < st.size(); i ++) {
+            System.out.println(iterator.next() + ", ");
+        }
+        System.out.print(" ]");
+    }
 
 
     public static void main(String[] args) {
