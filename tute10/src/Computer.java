@@ -7,7 +7,7 @@ public class Computer implements ComputerComponent {
         this.name = name;
         this.memory = memory;
     }
-    
+
     @Override
     public String toString() {
         return name;
@@ -16,6 +16,4 @@ public class Computer implements ComputerComponent {
     public int getMemory() {
         return memory;
     }
-    
-
 }
