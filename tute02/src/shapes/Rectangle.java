@@ -1,8 +1,8 @@
 package shapes;
 
 public class Rectangle extends Shape {
-    public int height;
-    public int width;
+    private int height;
+    private int width;
 
     public Rectangle(String color) {
         super(color);
