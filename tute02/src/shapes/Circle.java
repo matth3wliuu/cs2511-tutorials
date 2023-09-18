@@ -24,4 +24,12 @@ public class Circle extends Shape {
     public int y() {
         return this.y;
     }
+
+    public static void main(String[] args) {
+        Circle circle1 = new Circle("red");
+        System.out.println(Circle.numberOfCircles);
+
+        Circle circle2 = new Circle("blue");
+        System.out.println(Circle.numberOfCircles);
+    }
 }
