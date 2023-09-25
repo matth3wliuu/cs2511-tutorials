@@ -7,7 +7,7 @@ public class Wondrous {
 
     public List<Integer> wondrous(int start) {
         int current = start;
-        List<Integer> sequence = new ArrayList<Integer>();
+        List<Integer> sequence = new ArrayList<>();
 
         while (current != 1) {
             sequence.add(current);
@@ -21,4 +21,8 @@ public class Wondrous {
         return sequence;
     }
 
+    public static void main(String[] args) {
+        Wondrous w = new Wondrous();
+        System.out.println(w.wondrous(3));
+    }
 }
