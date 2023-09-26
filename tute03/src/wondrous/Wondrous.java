@@ -3,6 +3,8 @@ package wondrous;
 import java.util.ArrayList;
 import java.util.List;
 
+// wondrou(3): 3, 10, 5, ...,
+
 public class Wondrous {
 
     public List<Integer> wondrous(int start) {
@@ -18,6 +20,7 @@ public class Wondrous {
             }
         }
 
+        sequence.add(current);
         return sequence;
     }
 

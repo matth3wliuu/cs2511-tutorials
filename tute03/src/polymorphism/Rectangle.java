@@ -1,5 +1,12 @@
 package polymorphism;
 
+// * implements: Rectangle must provide an implementation for all methods defined in the Shape
+// * interface
+
+// ? how to decide between interface and abstract class
+// * in interface, you cannot define any member variables
+// * but this is possible in an abstract class
+
 public class Rectangle implements Shape {
     private int b, h;
 
