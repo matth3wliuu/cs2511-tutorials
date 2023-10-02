@@ -11,9 +11,8 @@ public class App {
             System.out.println(string);
         }
 
-        List<String> strings2 = new ArrayList<String>(Arrays.asList(new String[] {"1", "2", "3", "4", "5"}));
         List<Integer> ints = new ArrayList<Integer>();
-        for (String string : strings2) {
+        for (String string : strings) {
             ints.add(Integer.parseInt(string));
         }
         System.out.println(ints);
