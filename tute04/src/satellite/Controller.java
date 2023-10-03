@@ -47,7 +47,6 @@ public class Controller {
             .map(x -> (FastSatellite) x)
             .collect(Collectors.toList());
 
-
         //* What if im trying to look for a satellite with name == "Fast Satellite 2"?
 
         // Method 1, normal for-in/for-each
