@@ -20,4 +20,15 @@ public class Seminar {
     public List<String> getAttendees() {
         return attendees;
     }
+
+    // * Now Seminar is encapsulated where it is in charged of adding employees and enforcing rules
+    public LocalDate book(String employee, List<LocalDate> avails) {
+        for (LocalDate available : avails) {
+            if (this.getStart().equals(available) && this.getAttendees().size() < 10) {
+                    this.getAttendees().add(employee);
+                    return available;
+            }
+        }
+        return null;
+    }
 }

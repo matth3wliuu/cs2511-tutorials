@@ -1,5 +1,6 @@
 package training;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -9,7 +10,6 @@ import java.util.List;
  *
  */
 public class Trainer {
-
     private String name;
     private String room;
 
@@ -17,5 +17,16 @@ public class Trainer {
 
     public List<Seminar> getSeminars() {
         return seminars;
+    }
+
+    public LocalDate book(String employee, List<LocalDate> avails) {
+        for (Seminar seminar : this.getSeminars()) {
+            LocalDate booking = seminar.book(employee, avails);
+            if (booking != null) {
+                return booking;
+            }
+        }
+
+        return null;
     }
 }
