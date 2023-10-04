@@ -23,8 +23,10 @@ class SubClass extends SuperClass {
     }
 
     // ? What happened to the precondition?
+    // * reducing the possible valid input space == strengthening the precondition
 
     // ? What happend to the postcondition?
+    // * increasing the possible valid output space == weakening the postcondition
 }
 
 public class Rotator {
@@ -34,7 +36,7 @@ public class Rotator {
     public void inspect(double angle) throws Exception {
         if (angle > 270 || angle < 90) {
             throw new Exception("angle must be at least 90 degrees and at most 270 degrees");
-        }
+    }
         System.out.println(angle);
     }
 
@@ -46,8 +48,8 @@ public class Rotator {
 
         double angle = 90;
 
-        double angle1 = sup.rotate(angle);
-        double angle2 = sub.rotate(angle);
+        double angle1 = sup.rotate(angle); // this follows the pre condition
+        double angle2 = sub.rotate(angle); // this will break because the sub class loosened the post condition and strengthend the precondition
 
         // * By LSP, we should be able to pass both angle1 and angle2 without worries
 

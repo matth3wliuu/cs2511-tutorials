@@ -64,5 +64,16 @@ public class Controller {
             .stream()
             .filter(x -> x.getName().equals("Fast Satellite 2"))
             .findAny();
+
+        if (g2.isEmpty()) {
+            // g2.get
+        }
+
+        // if g2 contains a value
+        if (g2.isPresent()) {
+
+        }
     }
 }
+
+// data Optional = Nothing | Just a
