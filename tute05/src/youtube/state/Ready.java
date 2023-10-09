@@ -3,7 +3,6 @@ package youtube.state;
 import youtube.Player;
 
 public class Ready extends ViewingState {
-
     public Ready(Player player) {
         super(player);
     }

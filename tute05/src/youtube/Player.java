@@ -1,7 +1,6 @@
 package youtube;
 
 import youtube.state.Ready;
-import youtube.state.Ready;
 import youtube.state.ViewingState;
 
 public class Player {
