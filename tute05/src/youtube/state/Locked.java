@@ -3,15 +3,16 @@ package youtube.state;
 import youtube.Player;
 
 public class Locked extends ViewingState {
-
     public Locked(Player player) {
         super(player);
     }
 
     @Override
     public String lock() {
-        if (getVideoPlayer().getIsPlaying()) {
-            getVideoPlayer().changeState(new Ready(getVideoPlayer()));
+        Player videoPlayer = getVideoPlayer();
+
+        if (videoPlayer.getIsPlaying()) {
+            videoPlayer.changeState(new Ready(videoPlayer));
             return "Stop playing";
         }
         return "Locked";
@@ -19,7 +20,9 @@ public class Locked extends ViewingState {
 
     @Override
     public String play() {
-        getVideoPlayer().changeState(new Ready(getVideoPlayer()));
+        Player videoPlayer = getVideoPlayer();
+
+        videoPlayer.changeState(new Ready(videoPlayer));
         return "Ready...";
     }
 
