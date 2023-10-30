@@ -1,9 +1,8 @@
 package stack;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Optional;
 
 /**
  * A Simple Stack.
@@ -12,75 +11,62 @@ import java.util.List;
  */
 public class Stack<E> implements Iterable<E> {
 
-    private List<E> stack = new ArrayList<>();
-
-
     /**
      * Pushes an element onto the top of the stack.
      * @param element
      */
     public void push(E element) {
-        stack.add(element);
     }
 
     /**
      * Returns the size of the stack.
      */
     public int size() {
-        return stack.size();
+        return -1;
     }
 
     /**
      * Returns the top element of the stack, without removing it.
-     * @ precondition: the stack is not empty.
      */
-    public E peek() {
-        return stack.get(stack.size() - 1);
+    public Optional<E> peek() {
+        return Optional.empty();
     }
 
     /**
      * Removes the top element of the stack, and returns that element.
-     * @precondition The stack is not empty.
      */
-    public E pop() {
-        return stack.remove(stack.size() - 1);
+    public Optional<E> pop() {
+        return Optional.empty();
     }
 
     /**
      * Returns the stack as an ArrayList
      */
     public ArrayList<E> toArrayList() {
-        return new ArrayList<E>(stack);
+        return null;
     }
 
     /**
      * Returns an iterator to the internal data structure of the stack.
      */
     public Iterator<E> iterator() {
-        List<E> copy = toArrayList();
-        Collections.reverse(copy);
-        return copy.iterator();
+        return null;
     }
 
+    // ? Why didn't we just do Stack<Integer>
+
+    /**
+    * Returns the sum of a stack of integers
+    */
     public static Integer sumStack(Stack<? extends Integer> st) {
-        Integer res = 0;
-        for (Integer element : st) {
-            res += element;
-        }
-        return res;
+        return 0;
     }
 
-    // 1, 2, 3, 4, 5
-    // [ 1, 2, 3, 4, 5 ]
+    /**
+    * Pretty print a stack containing arbitrary elements, delimited by "," and enclosed by "[" and "]"
+    */
     public static void prettyPrint(Stack<?> st) {
-        System.out.print("[ ");
-        Iterator<?> iterator = st.iterator();
-        for (int i = 0; i < st.size(); i ++) {
-            System.out.println(iterator.next() + ", ");
-        }
-        System.out.print(" ]");
     }
-
 
     public static void main(String[] args) {
         Stack<String> stack = new Stack<String>();

@@ -20,6 +20,9 @@ public class Game {
 
         Character dragon = dragonFactory.createCharacter();
 
+        CharacterFactory dragonFactory = new DragonFactory();
+        Character d = dragonFactory.createCharacter();
+
         knight.attack(dragon);
     }
 }

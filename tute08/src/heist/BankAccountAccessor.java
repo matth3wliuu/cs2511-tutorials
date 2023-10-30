@@ -6,20 +6,10 @@ package heist;
  * @author Nick Patrikeos + @your name
  */
 public class BankAccountAccessor {
-
     private BankAccount account;
 
-    private static BankAccountAccessor accessor = null;
-
-    private BankAccountAccessor(BankAccount account) {
+    public BankAccountAccessor(BankAccount account) {
         this.account = account;
-    }
-
-    public static BankAccountAccessor getInstance(BankAccount account) {
-        if (accessor == null) {
-            accessor = new BankAccountAccessor(account);
-        }
-        return accessor;
     }
 
     public synchronized void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
