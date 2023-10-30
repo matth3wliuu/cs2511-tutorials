@@ -12,7 +12,7 @@ public class BankAccountAccessor {
         this.account = account;
     }
 
-    public synchronized void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
+    public void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
         System.out.println(user + " is accessing the bank.");
 
         for (int i = 0; i < numberOfWithdrawals; i++) {
