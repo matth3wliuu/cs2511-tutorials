@@ -6,7 +6,6 @@ package heist;
  * @author Nick Patrikeos + @your name
  */
 public class BankAccountAccessor {
-
     private BankAccount account;
 
     private static BankAccountAccessor accessor = null;
