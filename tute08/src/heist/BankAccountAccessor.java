@@ -8,9 +8,26 @@ package heist;
 public class BankAccountAccessor {
     private BankAccount account;
 
-    public BankAccountAccessor(BankAccount account) {
+    private static BankAccountAccessor instance;
+
+    private BankAccountAccessor(BankAccount account) {
         this.account = account;
     }
+
+    // * Only one thread can be executing the withdraw function at any given time
+    // ? what is the consequence of using the synchronized keyword?
+    // * we lose the performance benefits of using multiple threads
+
+    public synchronized static BankAccountAccessor getInstance(BankAccount account) {
+        if (instance == null) {
+            instance = new BankAccountAccessor(account);
+        }
+        return instance;
+    }
+
+    // * Only one thread can be executing the withdraw function at any given time
+    // ? what is the consequence of using the synchronized keyword?
+    // * we lose the performance benefits of using multiple threads
 
     public void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
         System.out.println(user + " is accessing the bank.");

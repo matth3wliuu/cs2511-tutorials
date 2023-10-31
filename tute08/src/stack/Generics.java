@@ -1,5 +1,7 @@
 package stack;
 
+// * Disclaimer: very contrived example
+
 class NoGenerics {
     public static void printString(String s) {
         System.out.println(s);
