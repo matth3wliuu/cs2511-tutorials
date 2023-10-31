@@ -89,16 +89,21 @@ public class Stack<E> implements Iterable<E> {
     */
     public static Integer sumStack(Stack<? extends Integer> st) {
         // ? x = st.get(0);
-        Integer result = 0;
 
         // * this is not allowed in COMP2511
         // for (var x : st) {
-        //     result += x;
+            //     result += x;
         // }
 
-        List<? extends Integer> lst = st.toArrayList();
-        for (int i = 0; i < lst.size(); i++) {
-            result += lst.get(i);
+        // List<? extends Integer> lst = st.toArrayList();
+        // for (int i = 0; i < lst.size(); i++) {
+        //     result += lst.get(i);
+        // }
+
+        Integer result = 0;
+        Iterator<? extends Integer> iterator = st.iterator();
+        while (iterator.hasNext()) {
+            result += iterator.next();
         }
 
         return result;
@@ -109,16 +114,25 @@ public class Stack<E> implements Iterable<E> {
     */
     // 1, 2, 3, 4, 5 => [1, 2, 3, 4, 5 ]
     public static void prettyPrint(Stack<?> st) {
-        System.out.print("[");
 
-        List<?> lst = st.toArrayList();
-        for (int i = 0; i < lst.size(); i++) {
-            System.out.print(lst.get(i));
-            if (i != lst.size() - 1) {
+        // List<?> lst = st.toArrayList();
+        // for (int i = 0; i < lst.size(); i++) {
+        //     System.out.print(lst.get(i));
+        //     if (i != lst.size() - 1) {
+        //         System.out.print(", ");
+        //     }
+        // }
+
+        System.out.print("[");
+        Iterator<?> iter = st.iterator();
+        while (iter.hasNext()) {
+            System.out.print(iter.next());
+
+            // check if we not at the last element
+            if (iter.hasNext()) {
                 System.out.print(", ");
             }
         }
-
         System.out.print("]");
     }
 
