@@ -15,6 +15,10 @@ public class Calculator {
         Expression exp1 = new Leaf(42);
         System.out.println(Calculator.compute(exp1));
 
+        Expression lhs = new Division(new Leaf(3), new Leaf(4));
+        Expression first = new Multiplication(lhs, new Leaf(5));
+
+        System.out.println(Calculator.compute(first));
 
         // exp2 = ((1 + 2) - ((3 / 4) * 5))
         // ? what is the outermost node we should construct
