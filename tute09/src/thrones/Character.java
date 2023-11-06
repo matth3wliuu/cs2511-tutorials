@@ -2,53 +2,53 @@ package thrones;
 
 import java.util.List;
 
-/**
- * A character in the simple grid game example.
- *
- * @author Robert Clifton-Everest
- *
- */
-public abstract class Character {
-    private int healthPoints;
+// ? What are the template methods in the Character interface?
 
-    private int x, y;
+// ? What are the hook methods in the Character interface?
 
-    public Character(int x, int y) {
-        healthPoints = 100;
-        this.x = x;
-        this.y = y;
-    }
+// ? What are the final methods in the Character interface?
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
 
-    public int getX() {
-        return x;
-    }
+public interface Character {
+    public int getHealthPoints();
 
-    public int getY() {
-        return y;
-    }
+    public int getX();
+
+    public int getY();
+
+    public void setX(int x);
+
+    public void setY(int y);
 
     /**
      * Cause this character the given amount of damage.
      *
      * @param points
      */
-    public void damage(int points) {
-        healthPoints -= points;
-    }
+    public void damage(int points);
 
     /**
-     * Attempts to make a move to a square in the game, given all of the characters
-     * If it is an invalid move, returns INVALID.
-     * If it is a valid move but the square is occupied, attacks the character and returns ATTACK
-     * If it is a valid move and the square is free, returns SUCCESS
+     * This character attacks the given victim, causing them damage according to
+     * their rules.
+     *
+     * @param victim
      */
-    public MoveResult makeMove(int x, int y, List<Character> characters) {
-        // This function uses two abstract methods (AKA 'hook methods') which the concrete classes must implement
-        if (!canMove(this.x - x, this.y - y)) {
+    public void attack(Character victim);
+
+    /**
+     * Can this character move by the given amount along the x and y axes.
+     *
+     * @param x
+     * @param y
+     * @return True if they can move by that amount, false otherwise
+     */
+    public boolean canMove(int dx, int dy);
+
+    // ? Follow up from last week. Why is the type of the characters variable specifically List<Character>
+    // ? and not for example, ArrayList<Character>?
+
+    public default MoveResult makeMove(int x, int y, List<Character> characters) {
+        if (!canMove(this.getX() - x, this.getY() - y)) {
             return MoveResult.INVALID;
         }
 
@@ -58,31 +58,10 @@ public abstract class Character {
                 return MoveResult.ATTACK;
             }
         }
-        
-        this.x = x;
-        this.y = y;
+
+        this.setX(x);
+        this.setY(y);
 
         return MoveResult.SUCCESS;
     }
-
-    public String toString() {
-        return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
-    }
-
-    /**
-     * This character attacks the given victim, causing them damage according to
-     * their rules.
-     *
-     * @param victim
-     */
-    public abstract void attack(Character victim);
-
-    /**
-     * Can this character move by the given amount along the x and y axes.
-     *
-     * @param x
-     * @param y
-     * @return True if they can move by that amount, false otherwise
-     */
-    public abstract boolean canMove(int dx, int dy);
 }
