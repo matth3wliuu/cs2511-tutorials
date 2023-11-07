@@ -7,6 +7,20 @@ package thrones;
  * @author Robert Clifton-Everest
  *
  */
-public class Dragon {
+public class Dragon extends CharacterBase {
+    public Dragon(int x, int y) {
+        super(x, y);
+    }
 
+    @Override
+    public void attack(Character victim) {
+        if (Math.random() > 1 / 6) {
+            victim.damage(20);
+        }
+    }
+
+    @Override
+    public boolean canMove(int dx, int dy) {
+        return dx + dy <= 1;
+    }
 }
