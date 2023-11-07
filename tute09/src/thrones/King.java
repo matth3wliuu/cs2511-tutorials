@@ -7,6 +7,20 @@ package thrones;
  * @author Robert Clifton-Everest
  *
  */
-public class King {
+public class King extends CharacterBase {
+    public King(int x, int y) {
+        super(x, y);
+    }
+
+    @Override
+    public void attack(Character victim) {
+        victim.damage(8);
+    }
+
+    @Override
+    public boolean canMove(int dx, int dy) {
+        // ? how do i check if a move with dx and dy is valid for a King?
+        return Math.abs(dx) <= 1 && Math.abs(dy) <= 1;
+    }
 
 }

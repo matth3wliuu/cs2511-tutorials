@@ -3,11 +3,14 @@ package thrones;
 import java.util.List;
 
 // ? What are the template methods in the Character interface?
+// * makeMove is the template method that contain steps which can be overwritten
+// * by implementors of the interface. i.e. canMove be overwritten.
 
 // ? What are the hook methods in the Character interface?
+// * attack and canMove are hook methods that need to be defined by the subclasses
 
 // ? What are the final methods in the Character interface?
-
+// * there are no final methods
 
 public interface Character {
     public int getHealthPoints();
@@ -46,6 +49,8 @@ public interface Character {
 
     // ? Follow up from last week. Why is the type of the characters variable specifically List<Character>
     // ? and not for example, ArrayList<Character>?
+    // * I want users of my code to be able to pass in any type of list as long as i can iterate through them
+    // * in some sequential way
 
     public default MoveResult makeMove(int x, int y, List<Character> characters) {
         if (!canMove(this.getX() - x, this.getY() - y)) {

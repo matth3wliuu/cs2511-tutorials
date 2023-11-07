@@ -48,9 +48,14 @@ public class Game {
 
         game.addCharacter(new Dragon(0, 0));
         game.addCharacter(new Knight(1, 2));
+        game.addCharacter(new King(0, 0));
 
-        // TODO: construct a Queen wearing 1 HelmetDecorator and 1 ChestplateDecorator
+        // TODO: construct a Queen wearing 1 HelmetDecorator and 1 ChainMailDecorator
+        Character queen = new Queen(0, 0);
+        Character helmtedQueen = new Helmet(queen);
+        Character helmetChainmailQueen = new ChainMail(helmtedQueen);
 
+        game.addCharacter(helmetChainmailQueen);
         game.play();
     }
 }
