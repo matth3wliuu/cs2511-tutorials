@@ -23,7 +23,7 @@ public class BankAccountAccessor {
 
     // * Synchronized: only one thread can be executing this function at any given time
     // * loses the benefit of multithreading because only one thread can execute at once => minimise synchronized regions
-    public synchronized void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
+    public void withdraw(String user, int numberOfWithdrawals, int amountPerWithdrawal) {
         System.out.println(user + " is accessing the bank.");
 
         for (int i = 0; i < numberOfWithdrawals; i++) {
