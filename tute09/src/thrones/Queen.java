@@ -8,6 +8,19 @@ package thrones;
  * @author Robert Clifton-Everest
  *
  */
-public class Queen {
+public class Queen extends CharacterBase {
+    public Queen(int x, int y) {
+        super(x, y);
+    }
 
+    @Override
+    public void attack(Character victim) {
+        final int damage = Math.random() <= 1 / 3 ? 12 : 6;
+        victim.damage(damage);
+    }
+
+    @Override
+    public boolean canMove(int dx, int dy) {
+        return (Math.abs(dx) == Math.abs(dy) || dx == 0 || dy == 0);
+    }
 }
