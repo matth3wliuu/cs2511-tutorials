@@ -3,11 +3,13 @@ package thrones;
 import java.util.List;
 
 // ? What are the template methods in the Character interface?
+// * makeMove
 
 // ? What are the hook methods in the Character interface?
+// * attack and canMove
 
 // ? What are the final methods in the Character interface?
-
+// * getX, getY, etc
 
 public interface Character {
     public int getHealthPoints();
@@ -43,6 +45,7 @@ public interface Character {
      * @return True if they can move by that amount, false otherwise
      */
     public boolean canMove(int dx, int dy);
+    // * (0, 0) and dy = 1, dy = 1 => checks can we move to (1, 1)
 
     // ? Follow up from last week. Why is the type of the characters variable specifically List<Character>
     // ? and not for example, ArrayList<Character>?
@@ -52,6 +55,7 @@ public interface Character {
             return MoveResult.INVALID;
         }
 
+        // me: (0, 0), character: (1, 1),
         for (Character character : characters) {
             if (character != this && character.getX() == x && character.getY() == y) {
                 attack(character);

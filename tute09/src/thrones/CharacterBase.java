@@ -17,7 +17,8 @@ public abstract class CharacterBase implements Character {
         this.y = y;
     }
 
-    public int getHealthPoints() {
+    // * final prevents subclasses from overriding this method
+    public final int getHealthPoints() {
         return healthPoints;
     }
 
