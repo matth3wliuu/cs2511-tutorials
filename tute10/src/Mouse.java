@@ -1,5 +1,5 @@
 
-public class Mouse {
+public class Mouse implements ComputerComponent {
     private String name;
 
     public Mouse(String name) {
