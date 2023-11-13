@@ -1,5 +1,5 @@
 
-public class Keyboard {
+public class Keyboard implements ComputerComponent {
 
     private String name;
     private int numKeys = 36;
