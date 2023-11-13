@@ -1,4 +1,4 @@
-public class Computer implements ComputerComponent {
+public class Computer{
 
     private String name;
     private int memory;
