@@ -11,4 +11,8 @@ public class Mouse implements ComputerComponent {
         return name;
     }
 
+    @Override
+    public void accept(ComputerVisitor v) {
+        v.visit(this);
+    }
 }
