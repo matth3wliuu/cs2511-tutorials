@@ -16,8 +16,7 @@ public class TrainingSystem {
         for (Trainer trainer : trainers) {
             for (Seminar seminar : trainer.getSeminars()) {
                 for (LocalDate available : availability) {
-                    if (seminar.getStart().equals(available) &&
-                            seminar.getAttendees().size() < 10) {
+                    if (seminar.getStart().equals(available) && seminar.getAttendees().size() < 10) {
                         seminar.getAttendees().add(employee);
                         return available;
                     }
@@ -29,14 +28,9 @@ public class TrainingSystem {
 }
 
 // ? How does the TrainingSystem violate the Law of Demeter?
-// * Line 8:
-// * Line 12:
-// * Line 13:
-//      *
-// * Line 14:
-// * Line 15:
+// * Line 16:
+// * Line 17:
+// * Line 18:
+// * Line 19:
 
 // ? What other properties of this design are undesirable?
-// *
-// *
-// *
