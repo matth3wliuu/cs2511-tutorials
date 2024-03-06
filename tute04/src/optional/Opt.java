@@ -9,6 +9,8 @@ public class Opt {
         Optional<String> hasValue = Optional.of("Hello world!");
         Optional<String> noValue = Optional.empty();
 
+        Optional<Integer> hello = Optional.of(123);
+
         // * equivalent to declaring a function in the local scope with argument type = Optional<String> and return type = void
         Consumer<Optional<String>> doSomething = (Optional<String> opt) -> {
             // * to access the value within an optional, you must first check if a value is present
