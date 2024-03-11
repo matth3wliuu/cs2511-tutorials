@@ -1,33 +1,29 @@
 package youtube.state;
 
-import youtube.Player;
+import youtube.VideoPlayer;
 
 public class Locked extends ViewingState {
-    public Locked(Player player) {
+    public Locked(VideoPlayer player) {
         super(player);
     }
 
     @Override
-    public String lock() {
-        Player videoPlayer = getVideoPlayer();
-
+    public ViewingResult lock() {
+        VideoPlayer videoPlayer = getVideoPlayer();
         if (videoPlayer.getIsPlaying()) {
             videoPlayer.changeState(new Ready(videoPlayer));
-            return "Stop playing";
+            return new ViewingResult.Ready();
         }
-        return "Locked";
+        return new ViewingResult.Locked();
     }
 
     @Override
-    public String play() {
-        Player videoPlayer = getVideoPlayer();
-
-        videoPlayer.changeState(new Ready(videoPlayer));
-        return "Ready...";
+    public ViewingResult play() {
+        return new ViewingResult.Error("Cannot play the current video because it is locked");
     }
 
     @Override
-    public String next() {
-        return "Error: Locked";
+    public ViewingResult next() {
+        return new ViewingResult.Error("Cannot play the next video becuase it is locked");
     }
 }
