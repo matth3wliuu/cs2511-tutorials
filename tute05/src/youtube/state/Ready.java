@@ -1,27 +1,34 @@
 package youtube.state;
 
-import youtube.Player;
+import youtube.Video;
+import youtube.VideoPlayer;
 
 public class Ready extends ViewingState {
-    public Ready(Player player) {
+    public Ready(VideoPlayer player) {
         super(player);
     }
 
     @Override
-    public String lock() {
+    public ViewingResult lock() {
+        // * Get the video player and change its state to the locked state
         getVideoPlayer().changeState(new Locked(getVideoPlayer()));
-        return "Locked";
+        System.out.println("Locking the video player");
+        return new ViewingResult.Locked();
     }
 
     @Override
-    public String play() {
-        String video = getVideoPlayer().playVideo();
-        getVideoPlayer().changeState(new Playing(getVideoPlayer()));
-        return video;
+    public ViewingResult play() {
+        VideoPlayer player = getVideoPlayer();
+        System.out.println(player.playVideo());
+        player.changeState(new Playing(player));
+        return new ViewingResult.Playing(player.getVideo());
     }
 
     @Override
-    public String next() {
-        return "Error: cannot move to next video";
+    public ViewingResult next() {
+        VideoPlayer player = getVideoPlayer();
+        final Video nextVideo = player.getNextVideo();
+        System.out.println(player.playNextVideo());
+        return new ViewingResult.Playing(nextVideo);
     }
 }

@@ -17,7 +17,11 @@ public class Seminar {
         return start;
     }
 
-    public List<String> getAttendees() {
-        return attendees;
+    public LocalDate book(LocalDate available, String employee) {
+        if (getStart().equals(available) && attendees.size() < 10) {
+            attendees.add(employee);
+            return available;
+        }
+        return null;
     }
 }

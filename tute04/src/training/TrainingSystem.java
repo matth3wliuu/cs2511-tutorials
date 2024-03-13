@@ -14,13 +14,10 @@ public class TrainingSystem {
 
     public LocalDate bookTraining(String employee, List<LocalDate> availability) {
         for (Trainer trainer : trainers) {
-            for (Seminar seminar : trainer.getSeminars()) {
-                for (LocalDate available : availability) {
-                    if (seminar.getStart().equals(available) &&
-                            seminar.getAttendees().size() < 10) {
-                        seminar.getAttendees().add(employee);
-                        return available;
-                    }
+            for (LocalDate available : availability) {
+                LocalDate booking = trainer.book(available, employee);
+                if (booking != null) {
+                    return booking;
                 }
             }
         }
@@ -29,14 +26,14 @@ public class TrainingSystem {
 }
 
 // ? How does the TrainingSystem violate the Law of Demeter?
-// * Line 8:
-// * Line 12:
-// * Line 13:
-//      *
-// * Line 14:
-// * Line 15:
+// * Line 16: this is fine because we are just iterating through a list that is a member variable
+// * Line 17: this is fine because we can call methods from the Trainer class which is a friend
+// * Line 18: this is fine because we can access values passed in as arguments
+// ! Line 19: this is not okay because we cannot call methods (getStart, getAttendees) from the
+// ! Seminar class since it is not a friend
 
 // ? What other properties of this design are undesirable?
-// *
-// *
-// *
+// * Seminar class is poorly encapsulated:
+    // * restriction of capacity is not being enforced by the class itself
+    // * getAttendees exposes our internal list of attendees to potential malicious users
+// * Lack of a abstraction / modularisation: String employee and List<LocalDate> can be combined into a class
