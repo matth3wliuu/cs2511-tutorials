@@ -6,9 +6,13 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Restaurant {
+import restaurant.strategy.ChargingStrategy;
+import restaurant.strategy.Standard;
 
-    private String chargingStrategy = "standard";
+public class Restaurant {
+    // private String chargingStrategy = "standard";
+    private ChargingStrategy chargingStrategy = new Standard();
+
     private String name;
     private List<Meal> menu = new ArrayList<Meal>();
     private List<String> members = new ArrayList<String>();
@@ -24,39 +28,29 @@ public class Restaurant {
     }
 
     public double cost(List<Meal> order, String payee) {
-        switch (chargingStrategy) {
-            case "standard":
-                return order.stream().mapToDouble(meal -> meal.getCost()).sum();
-            case "holiday":
-                return order.stream().mapToDouble(meal -> meal.getCost() * 1.15).sum();
-            case "happyHour":
-                if (members.contains(payee)) {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.6).sum();
-                } else {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.7).sum();
-                }
-            case "discount":
-                if (members.contains(payee)) {
-                    return order.stream().mapToDouble(meal -> meal.getCost() * 0.85).sum();
-                } else {
-                    return order.stream().mapToDouble(meal -> meal.getCost()).sum();
-                }
-            default: return 0;
-        }
+        // ? why does this switch statement break the open-close principle?
+        // * Open-close principle: a class should be CLOSED for modification and OPEN for extension.
+        // * Akshar: we need a new switch statement for each each type of charging strategy
+        final boolean isMember = members.contains(payee);
+
+        //? How can i calculate the cost of someone's order using the new system?
+        // * Delegate the computation to the specific strategy
+        return this.chargingStrategy.cost(order, isMember);
     }
 
     public void displayMenu() {
-        double modifier = 0;
-        switch (chargingStrategy) {
-            case "standard": modifier = 1; break;
-            case "holiday": modifier = 1.15; break;
-            case "happyHour": modifier = 0.7; break;
-            case "discount": modifier = 1; break;
-        }
+        final double modifier = this.chargingStrategy.standardChargeModifier();
 
         for (Meal meal : menu) {
             System.out.println(meal.getName() + " - " + meal.getCost() * modifier);
         }
+    }
+
+    // ? Is there anything that we're missing?
+    // * Need a way to change our strategy
+
+    public void setStrategy(ChargingStrategy newStrategy) {
+        this.chargingStrategy = newStrategy;
     }
 
     public static void main(String[] args) {

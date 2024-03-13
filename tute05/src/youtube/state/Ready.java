@@ -10,6 +10,7 @@ public class Ready extends ViewingState {
 
     @Override
     public ViewingResult lock() {
+        // * Get the video player and change its state to the locked state
         getVideoPlayer().changeState(new Locked(getVideoPlayer()));
         System.out.println("Locking the video player");
         return new ViewingResult.Locked();

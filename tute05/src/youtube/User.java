@@ -1,6 +1,8 @@
 package youtube;
 
-public class User {
+import youtube.observer.Observer;
+
+public class User implements Observer {
     private String name;
 
     public User(String name) {
@@ -10,5 +12,10 @@ public class User {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public void alertNewVideo(Video newVideo) {
+        System.out.println("A new video " + newVideo.toString() + " has been posted!");
     }
 }
