@@ -1,7 +1,6 @@
 package thrones;
 
 public class Queen extends CharacterBase {
-
     public Queen(int x, int y) {
         super(x, y);
     }
